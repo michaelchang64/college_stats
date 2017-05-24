@@ -2,7 +2,17 @@ library(shiny)
 
 shinyServer(function(input, output) {
   
-  output$text1 <- renderText({
-    paste("You have selected ", input$var)
+  formulaText <- reactive(function() {
+    paste("", input$name)
+  })
+  
+  output$name <- reactiveText(function() {
+    formulaText()
+  })
+  
+  output$admissionsPlot <- renderPlot({
+    if (input$name == "Brown") {
+      
+    }
   })
 })

@@ -2,6 +2,7 @@
 
 # Import shiny package with library() function
 library(shiny)
+library(ggplot2)
 
 # Creates page that fits dimension of screen
 shinyUI(fluidPage(
@@ -12,20 +13,17 @@ shinyUI(fluidPage(
     sidebarPanel(
       helpText("Select a university to view admissions data."),
       
-      selectInput("var",
+      selectInput("name",
         label = "Select a university",
         choices = list("Brown", "Harvard", "Yale"),
-        selected = "Brown"),
+        selected = "Brown")
       
-      dateRangeInput("dates",
-        label = "Fall semester year range",
-        start = 2005, end = 2015,
-        min = 1999, max = 2016,
-        format = "yyyy",
-        startview = "year")
+      
     ),
     mainPanel(
-      textOutput("text1")
+      h3(textOutput("name")),
+      
+      plotOutput("admissionsPlot")
     )
   )
 ))
