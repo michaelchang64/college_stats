@@ -1,5 +1,6 @@
+library(ggvis)
 # Fall Semester Year
-years <- c(seq(2004, 2016, 1))
+years <- c(2004:2016)
 
 # Brown University Admissions Data
 brown.applicants <- c(15286, 16911, 18316, 19097, 20633, 24988, 30135, 30944, 28742, 28919, 30431, 30396, 32390)
@@ -17,4 +18,4 @@ brown.data <- data.frame("Fall Semester Year" = years,
                          "Number of Enrolled Students" = brown.enrolled,
                          "Rate of Enrollment" = brown.enrolled.rt)
 
-# Yale University Admissions Data
+axes_vars <- c(names(brown.data))

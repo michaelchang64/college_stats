@@ -2,12 +2,12 @@
 
 # Import shiny package with library() function
 library(shiny)
-library(ggplot2)
+library(ggvis)
 
 # Creates page that fits dimension of screen
 shinyUI(fluidPage(
   # This is the title
-  titlePanel("College Admissions Data"),
+  titlePanel(h1("College Admissions Data Visualizer")),
   # This creates the sidebar
   sidebarLayout(
     sidebarPanel(
@@ -15,23 +15,23 @@ shinyUI(fluidPage(
       
       selectInput("uni",
         label = "Select a university",
-        choices = list("Brown", "Harvard", "UC Berkeley", "Yale"),
+        choices = list("Brown", "UC Berkeley", "Yale"),
         selected = "Brown"),
       
       h4("Variables"),
       helpText("Compare two variables in a scatterplot"),
       
       fluidRow(
-        column(5,
-          selectInput('x', 'X', names(brown.data))
+        column(6,
+          selectInput('xvar', 'X', names(brown.data))
         ),
-        column(5,
-          selectInput('y', 'Y', names(brown.data), names(brown.data)[[2]]))
+        column(6,
+          selectInput('yvar', 'Y', names(brown.data), names(brown.data)[[2]]))
       )
     ),
     mainPanel(
-      h3(textOutput("uni"))
-      #plotOutput("admissionsPlot")
+      h3(textOutput("uni")),
+      ggvisOutput("plot1")
     )
   )
 ))
