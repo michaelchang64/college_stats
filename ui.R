@@ -15,7 +15,7 @@ shinyUI(fluidPage(
       
       selectInput("uni",
         label = "Select a university",
-        choices = list("Brown", "Berkeley", "Yale", "All Universities"),
+        choices = list("Brown", "Berkeley", "Yale"),
         selected = "Brown"),
       
       h4("Variables"),
@@ -28,7 +28,8 @@ shinyUI(fluidPage(
       
     mainPanel(
       h2(textOutput("uni")),
-      plotOutput("plot1")
+      plotOutput("plot1"),
+      dataTableOutput("dt")
     )
   )
 ))
