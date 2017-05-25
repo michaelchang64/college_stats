@@ -15,7 +15,8 @@ shinyServer(function(input, output, session) {
   output$plot1 <- renderPlot({
     p <- ggplot(selectedData(), aes(x = selectedData()[input$xvar], y = selectedData()[input$yvar])) +
       geom_point()
-    p + labs(x = input$xvar, y = input$yvar) 
+    p + labs(x = input$xvar, y = input$yvar) +
+      theme(aspect.ratio = .5) + theme_bw()
   })
 
 })
