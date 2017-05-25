@@ -2,7 +2,7 @@
 
 # Import shiny package with library() function
 library(shiny)
-library(ggvis)
+library(ggplot2)
 
 # Creates page that fits dimension of screen
 shinyUI(fluidPage(
@@ -15,23 +15,20 @@ shinyUI(fluidPage(
       
       selectInput("uni",
         label = "Select a university",
-        choices = list("Brown", "UC Berkeley", "Yale"),
+        choices = list("Brown", "Berkeley", "Yale", "All Universities"),
         selected = "Brown"),
       
       h4("Variables"),
       helpText("Compare two variables in a scatterplot"),
       
-      fluidRow(
-        column(6,
-          selectInput('xvar', 'X', names(brown.data))
-        ),
-        column(6,
-          selectInput('yvar', 'Y', names(brown.data), names(brown.data)[[2]]))
-      )
-    ),
+      wellPanel(
+        selectInput('xvar', 'X-axis variable', vars, selected = vars[1]),
+        selectInput('yvar', 'Y-axis variable', vars, selected = vars[2]))
+      ),
+      
     mainPanel(
-      h3(textOutput("uni")),
-      ggvisOutput("plot1")
+      h2(textOutput("uni")),
+      plotOutput("plot1")
     )
   )
 ))
