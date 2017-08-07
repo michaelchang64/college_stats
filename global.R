@@ -1,4 +1,4 @@
-# Gets directory path name for global.R
+# Gets then sets directory path name for global.R
 current.dir <- getwd()
 
 # Sets directory to that stored in current.dir object
